@@ -61,6 +61,7 @@ export default function App() {
   return (
     <Contenedor>
     <tarjetaParaItemDeCompra />   
+    <TituloDeLaPagina/>
       <View style={styles.inputRow}>
                
         <TextInput
