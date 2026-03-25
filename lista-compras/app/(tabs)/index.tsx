@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     textAlignVertical: "center",
     fontWeight: "700",
-  },
+  }, 
   pillTodo: { backgroundColor: "#eee", color: "#666" },
   pillDone: { backgroundColor: "#2ecc71", color: "#fff" },
   sep: { height: 1, backgroundColor: "#eee" },
