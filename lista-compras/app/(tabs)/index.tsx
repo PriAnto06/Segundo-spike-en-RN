@@ -59,7 +59,15 @@ export default function App() {
   return (
     <Contenedor>
       <TituloDeLaPagina />
-      <FormularioParaItemNuevo />
+      <ListaDeCompras
+  items={items}
+  componenteParaCadaItem={TarejetaParaItemDeCompra}
+/>
+    <FormularioParaItemNuevo
+     texto={text}
+      alIntroducirTexto={setText}
+     alAgregarItem={añadirItem} 
+          />
       <View style={styles.inputRow}>
         <TextInput
           value={text}
@@ -74,19 +82,6 @@ export default function App() {
           <Text style={styles.addTxt}>Agregar</Text>
         </Pressable>
       </View>
-
-      <FlatList
-        data={items}
-        keyExtractor={(it) => it.id}
-        renderItem={TarejetaParaItemDeCompra}
-        ListEmptyComponent={
-          <Text style={styles.empty}>
-            Sin productos. ¡Agregá el primero! 
-          </Text>
-        }
-        ItemSeparatorComponent={() => <View style={styles.sep} />}
-        contentContainerStyle={{ paddingBottom: 32 }}
-      />
     </Contenedor>
   );
 }
@@ -126,7 +121,28 @@ const FormularioParaItemNuevo = ({
   );
 };
   
-const ListaDeCompras= ({})
+const ListaDeCompras = ({
+  items,
+  componenteParaCadaItem,
+}: {
+  items: Item[];
+  componenteParaCadaItem: ({ item }: { item: Item }) => JSX.Element;
+}) => {
+  return (
+    <FlatList
+      data={items}
+      keyExtractor={(it) => it.id}
+      renderItem={componenteParaCadaItem}
+      ListEmptyComponent={
+        <Text style={styles.empty}>
+          Sin productos. ¡Agregá el primero!
+        </Text>
+      }
+      ItemSeparatorComponent={() => <View style={styles.sep} />}
+      contentContainerStyle={{ paddingBottom: 32 }}
+    />
+  );
+};
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 16, gap: 12, backgroundColor: "#fff" },
   title: { fontSize: 24, fontWeight: "bold", marginTop: 12 },
