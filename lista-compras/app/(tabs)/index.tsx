@@ -30,7 +30,7 @@ export default function App() {
 
   const toggleItem = (id: string) => {
     setItems((prev) =>
-      prev.map((it) => (it.id === id ? { ...it, done: !it.done } : it)),
+      prev.map((it) => (it.id === id ? { ...it, done: !it.done } : it))
     );
   };
 
@@ -44,26 +44,23 @@ export default function App() {
       onLongPress={() => eliminarItem(item.id)}
       style={styles.row}
     >
-           
       <Text style={[styles.rowText, item.done && styles.done]}>
-              {item.name}     
+        {item.name}
       </Text>
-           
+
       <Text
         style={[styles.pill, item.done ? styles.pillDone : styles.pillTodo]}
       >
-              {item.done ? "✔" : "•"}
+        {item.done ? "✔" : "•"}
       </Text>
-         
     </Pressable>
   );
 
   return (
     <Contenedor>
-    <tarjetaParaItemDeCompra />   
-    <TituloDeLaPagina/>
+      <TituloDeLaPagina />
+      <FormularioParaItemNuevo />
       <View style={styles.inputRow}>
-               
         <TextInput
           value={text}
           onChangeText={setText}
@@ -72,26 +69,24 @@ export default function App() {
           returnKeyType="done"
           onSubmitEditing={añadirItem}
         />
-               
+
         <Pressable style={styles.addBtn} onPress={añadirItem}>
-                   <Text style={styles.addTxt}>Agregar</Text>       
+          <Text style={styles.addTxt}>Agregar</Text>
         </Pressable>
-             
       </View>
-           
+
       <FlatList
         data={items}
         keyExtractor={(it) => it.id}
         renderItem={TarejetaParaItemDeCompra}
         ListEmptyComponent={
           <Text style={styles.empty}>
-            Sin productos. ¡Agregá el primero! 😊
+            Sin productos. ¡Agregá el primero! 
           </Text>
         }
         ItemSeparatorComponent={() => <View style={styles.sep} />}
         contentContainerStyle={{ paddingBottom: 32 }}
       />
-         
     </Contenedor>
   );
 }
@@ -103,31 +98,35 @@ const Contenedor = ({ children }: { children: ReactNode }) => {
 const TituloDeLaPagina = () => {
   return <View style={styles.title}></View>;
 };
-Const FormularioParaItemNuevo =({
+
+const FormularioParaItemNuevo = ({
   texto,
   alIntroducirTexto,
   alAgregarItem,
-}; {
-  texto:string;
-  alIntroducirTexto:(texto:string)=> void;
-  alAgregarItem:()=> void;  
+}: {
+  texto: string;
+  alIntroducirTexto: (texto: string) => void;
+  alAgregarItem: () => void;
 }) => {
-   <TextInput
-          value={texto}
-          onChangeText={alIntroducirTexto}
-          placeholder="Agregar producto (ej: Leche)"
-          style={styles.input}
-          returnKeyType="done"
-          onSubmitEditing={alAgregaritem}
-        />
-               
-        <Pressable style={styles.addBtn} onPress={añadirItem}>
-                   <Text style={styles.addTxt}>Agregar</Text>       
-        </Pressable>
-             
-      </View>
-};
+  return (
+    <View style={styles.inputRow}>
+      <TextInput
+        value={texto}
+        onChangeText={alIntroducirTexto}
+        placeholder="Agregar producto (ej: Leche)"
+        style={styles.input}
+        returnKeyType="done"
+        onSubmitEditing={alAgregarItem}
+      />
 
+      <Pressable style={styles.addBtn} onPress={alAgregarItem}>
+        <Text style={styles.addTxt}>Agregar</Text>
+      </Pressable>
+    </View>
+  );
+};
+  
+const ListaDeCompras= ({})
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 16, gap: 12, backgroundColor: "#fff" },
   title: { fontSize: 24, fontWeight: "bold", marginTop: 12 },
