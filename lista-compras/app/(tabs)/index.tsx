@@ -60,29 +60,17 @@ export default function App() {
   return (
     <Contenedor>
       <TituloDeLaPagina />
-      <ListaDeCompras
-  items={items}
-  componenteParaCadaItem={TarejetaParaItemDeCompra}
-/>
-    <FormularioParaItemNuevo
-     texto={text}
-      alIntroducirTexto={setText}
-     alAgregarItem={añadirItem} 
-          />
-      <View style={styles.inputRow}>
-        <TextInput
-          value={text}
-          onChangeText={setText}
-          placeholder="Agregar producto (ej: Leche)"
-          style={styles.input}
-          returnKeyType="done"
-          onSubmitEditing={añadirItem}
-        />
 
-        <Pressable style={styles.addBtn} onPress={añadirItem}>
-          <Text style={styles.addTxt}>Agregar</Text>
-        </Pressable>
-      </View>
+      <ListaDeCompras
+        items={items}
+        componenteParaCadaItem={TarejetaParaItemDeCompra}
+      />
+
+      <FormularioParaItemNuevo
+        texto={text}
+        alIntroducirTexto={setText}
+        alAgregarItem={añadirItem}
+      />
     </Contenedor>
   );
 }
@@ -121,13 +109,13 @@ const FormularioParaItemNuevo = ({
     </View>
   );
 };
-  
+
 const ListaDeCompras = ({
   items,
   componenteParaCadaItem,
 }: {
-  items: Item[]
-  componenteParaCadaItem: ListRenderItem<Item> | null | undefined;
+  items: Item[];
+  componenteParaCadaItem: ListRenderItem<Item>;
 }) => {
   return (
     <FlatList
@@ -144,6 +132,7 @@ const ListaDeCompras = ({
     />
   );
 };
+
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 16, gap: 12, backgroundColor: "#fff" },
   title: { fontSize: 24, fontWeight: "bold", marginTop: 12 },
@@ -180,7 +169,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     textAlignVertical: "center",
     fontWeight: "700",
-  }, 
+  },
   pillTodo: { backgroundColor: "#eee", color: "#666" },
   pillDone: { backgroundColor: "#2ecc71", color: "#fff" },
   sep: { height: 1, backgroundColor: "#eee" },
