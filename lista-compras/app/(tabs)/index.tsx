@@ -1,6 +1,7 @@
 import { ReactNode, useState } from "react";
 import {
   FlatList,
+  ListRenderItem,
   Pressable,
   StyleSheet,
   Text,
@@ -125,8 +126,8 @@ const ListaDeCompras = ({
   items,
   componenteParaCadaItem,
 }: {
-  items: Item[];
-  componenteParaCadaItem: ({ item }: { item: Item }) => JSX.Element;
+  items: Item[]
+  componenteParaCadaItem: ListRenderItem<Item> | null | undefined;
 }) => {
   return (
     <FlatList
