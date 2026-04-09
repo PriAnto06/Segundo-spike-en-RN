@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Item } from "../tipos/item";
 
-export default function usarItemsDeCompra() {
+export default function useItemsDeCompra() {
   const [items, setItems] = useState<Item[]>([]);
 
   const agregarItem = (name: string) => {

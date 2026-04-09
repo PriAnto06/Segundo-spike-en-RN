@@ -1,5 +1,6 @@
 import { FlatList, Text, Pressable, View, StyleSheet } from "react-native";
 import { Item } from "../tipos/item";
+import { useEffect } from "react";
 
 export default function ListaDeCompras({
   items,
@@ -10,6 +11,11 @@ export default function ListaDeCompras({
   alPresionarSobreUnItem: (id: string) => void;
   alMantenerPresionSobreUnItem: (id: string) => void;
 }) {
+
+  useEffect(() => {
+  console.log("items actualizado:", items);
+}, [items]);
+  
   return (
     <FlatList
       style={{ flex: 1 }}

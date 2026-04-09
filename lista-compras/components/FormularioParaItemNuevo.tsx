@@ -8,11 +8,12 @@ export default function FormularioParaItemNuevo({
 }) {
   const [texto, setTexto] = useState("");
 
-  const manejarAgregar = () => {
-    if (!texto.trim()) return;
-    alCompletarFormulario(texto);
-    setTexto("");
-  };
+ const manejarAgregar = () => {
+  if (!texto.trim()) return;
+  console.log("Formulario envía:", texto);
+  alCompletarFormulario(texto);
+  setTexto("");
+};
 
   return (
     <View style={styles.inputRow}>
