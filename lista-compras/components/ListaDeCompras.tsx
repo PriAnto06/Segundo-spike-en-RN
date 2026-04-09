@@ -12,6 +12,8 @@ export default function ListaDeCompras({
 }) {
   return (
     <FlatList
+      style={{ flex: 1 }}
+      contentContainerStyle={{ flexGrow: 1 }}
       data={items}
       keyExtractor={(it) => it.id}
       renderItem={({ item }) => (
@@ -23,7 +25,6 @@ export default function ListaDeCompras({
           <Text style={[styles.rowText, item.done && styles.done]}>
             {item.name}
           </Text>
-
           <Text
             style={[
               styles.pill,
@@ -45,18 +46,10 @@ export default function ListaDeCompras({
 }
 
 const styles = StyleSheet.create({
-  row: {
-    flexDirection: "row",
-    padding: 12,
-    justifyContent: "space-between",
-  },
+  row: { flexDirection: "row", padding: 12, justifyContent: "space-between" },
   rowText: { fontSize: 16 },
   done: { textDecorationLine: "line-through", color: "#999" },
-  pill: {
-    minWidth: 28,
-    textAlign: "center",
-    borderRadius: 14,
-  },
+  pill: { minWidth: 28, textAlign: "center", borderRadius: 14 },
   pillTodo: { backgroundColor: "#eee" },
   pillDone: { backgroundColor: "#2ecc71", color: "#fff" },
   sep: { height: 1, backgroundColor: "#eee" },

@@ -10,8 +10,7 @@ export default function FormularioParaItemNuevo({
 
   const manejarAgregar = () => {
     if (!texto.trim()) return;
-
-    alCompletarFormulario(texto); // 🔥 ACÁ estaba el problema
+    alCompletarFormulario(texto);
     setTexto("");
   };
 
@@ -24,7 +23,6 @@ export default function FormularioParaItemNuevo({
         style={styles.input}
         onSubmitEditing={manejarAgregar}
       />
-
       <Pressable style={styles.addBtn} onPress={manejarAgregar}>
         <Text style={styles.addTxt}>Agregar</Text>
       </Pressable>
@@ -33,7 +31,7 @@ export default function FormularioParaItemNuevo({
 }
 
 const styles = StyleSheet.create({
-  inputRow: { flexDirection: "row", gap: 8 },
+  inputRow: { flexDirection: "row", gap: 8, marginTop: 16 },
   input: {
     flex: 1,
     borderWidth: 1,
