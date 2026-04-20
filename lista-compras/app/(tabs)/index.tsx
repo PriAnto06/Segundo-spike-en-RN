@@ -7,10 +7,10 @@ import ListaDeCompras from "../../components/ListaDeCompras";
 import { Item } from "../../tipos/item";
 import useItemsDeCompra from "@/hooks/usarItemsDeCompra";
 
-// 🔹 Componente principal
+
 export default function App() {
 
-  // ✅ Usamos el hook **dentro del componente**
+
   const { items, agregarItem, cambiarItem, eliminarItem } = useItemsDeCompra();
 
   return (
